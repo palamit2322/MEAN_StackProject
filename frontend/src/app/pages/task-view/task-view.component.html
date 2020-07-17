@@ -1,5 +1,5 @@
 
-  <marquee width="100%" direction="left" height="50px" behavior="alternate">
+  <marquee width="100%" direction="left" height="50px" behavior="alternate" onMouseOver="this.stop()" onMouseOut="this.start()">
     <h1>
       {{weaterData.name}}:{{weaterData.main.temp}}&#8451;   {{weaterData.weather[0].description}}
     </h1></marquee>
