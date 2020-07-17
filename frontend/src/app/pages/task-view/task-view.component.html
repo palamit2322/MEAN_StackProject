@@ -1,0 +1,67 @@
+
+  <marquee width="100%" direction="left" height="50px" behavior="alternate">
+    <h1>
+      {{weaterData.name}}:{{weaterData.main.temp}}&#8451;   {{weaterData.weather[0].description}}
+    </h1></marquee>
+
+<div class="centered-content">
+  <div class="task-manager-container">
+    <div class="sidebar">
+      <h1 class="title has-text-primary">LISTS</h1>
+      <div class="list-menu">
+        <a [routerLink]="['/lists',list._id]" routerLinkActive="is-active" class="list-menu-item "
+          *ngFor="let list of lists">
+          <p class="white-text">
+            {{list.title}}
+            <span class="pull-right task-delete btn-rounded-corners" (click)="deleteList(list)">X</span>
+          </p>
+        </a>
+      </div>
+      <!-- <button class="btn btn-primary btn-rounded-corners" routerLink="/new-list">Add List</button>-->
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add List</button>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Create a New List</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="modal-box form-group">
+              <h1 class="title">Create a New List</h1>
+              <input #listInput type="text" class="form-control has-background-light" placeholder="Enter List Title">
+              <!-- <button class="btn  btn-primary" routerLink="/"> Cancel</button> -->
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button class=" btn btn-primary" (click)="addList(listInput.value)" data-dismiss="modal">Add</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="task-list-container">
+      <h1 class="title has-text-primary">TASKS</h1>
+      <div class="task" [class.complete]="task.completed" *ngFor="let task of tasks" (click)="noTaskClick(task)">
+        <p class="white-text">
+          {{task.title}}
+          <span class="pull-right task-delete btn-rounded-corners" (click)="deleteTask(task)">X</span>
+        </p>
+      </div>
+      <button class="btn btn-primary add-button" (click)="addTaskClick()">
+        Add Task
+      </button>
+    </div>
+  </div>
+</div>
